@@ -6,7 +6,7 @@
 <title>OCS</title>
 <meta name="description" content="God loves you this much. Find a Lutheran church near you.">
 <link rel="canonical" href="https://ocs.church/">
-<meta name="theme-color" content="#08040B">
+<meta name="theme-color" content="#14061A">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="OCS">
 <meta property="og:url" content="https://ocs.church/">
@@ -15,135 +15,172 @@
 <meta property="og:image" content="https://ocs.church/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A purple sign reading God loves you this much, with Jesus on the cross.">
+<meta property="og:image:alt" content="A purple sign reading God loves you this much, with Jesus on the cross, framed in gold.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700;800&family=Courier+Prime:wght@400;700&family=Marcellus&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@500;700;800&family=EB+Garamond:ital,wght@0,400..700;1,400..600&family=Marcellus&display=swap">
 <style>
 html{-webkit-text-size-adjust:100%}
 body{margin:0}
 [hidden]{display:none!important}
-/* Layout: one night screen. The OCS sign glows at center like a roadside sign after dark, masthead above, Romans 5:8 below, a ribbon tab for contact. Single dark world by design. */
+/* Layout: a centered, altar-like stack on royal purple. The OCS medallion (the sign's own purple and white, ringed in gold) has faint gold glory rays behind it, Romans 5:8 sits below in Garamond, and the gold Learn more button closes the column. A purple ribbon marker with gold edges opens the contact card. Single dark look by design. */
 :root{
   color-scheme:dark;
-  --night:#08040B;
+  --night:#14061A;
+  --royal:#2A0E33;
+  --royal-hi:#3D1749;
   --sign:#8A288B;          /* exact purple of the OCS sign */
   --sign-deep:#5E1F66;
-  --lilac:#C99BD0;
-  --text:#F5ECF7;
-  --text-2:#D9C6DF;
-  --text-3:#9A82A3;
-  --white:#FFFFFF;
-  --glass:rgba(20,9,26,.95);
-  --glass-line:rgba(205,160,215,.24);
-  --card:#FFFFFF;
-  --ink:#26132B;
-  --muted:#685470;
-  --rule:#E6D7E9;
-  --field:#FBF7FC;
+  --gold:#D8AC58;
+  --gold-hi:#F4DA98;
+  --gold-lo:#B98634;
+  --cream:#F8F1E4;
+  --cream-2:#E4D3E2;
+  --muted:#B39FB9;
+  --line:rgb(216 172 88 / .4);
+  --glass:rgb(26 8 32 / .97);
+  --card:#FFFDF8;
+  --ink:#2A0E33;
+  --ink-2:#6A5470;
+  --rule:#E8DCCB;
   --error:#A3123A;
-  --link:#7B2C84;
   --display:"Marcellus","Trajan Pro",Georgia,serif;
-  --mono:"Courier Prime","Courier New",ui-monospace,monospace;
+  --serif:"EB Garamond",Garamond,"Times New Roman",Georgia,serif;
   --sans:"Alegreya Sans","Gill Sans","Segoe UI",system-ui,sans-serif;
   --gutter:max(16px,4.5vw);
-  --edge:clamp(14px,3vw,36px);
+  --edge:clamp(12px,3vw,40px);
 }
 *,*::before,*::after{box-sizing:border-box}
 html,body{height:100%}
-body{background:var(--night);color:var(--text);font:400 1rem/1.6 var(--sans);-webkit-font-smoothing:antialiased}
-a:focus-visible{outline:3px solid var(--lilac);outline-offset:3px;border-radius:4px}
-#sky{position:fixed;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0}
+body{background-color:var(--night);background-image:radial-gradient(ellipse 75% 65% at 50% 34%,var(--royal-hi) 0%,var(--royal) 45%,var(--night) 100%);background-attachment:fixed;color:var(--cream);font:400 1rem/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.page{position:relative;min-height:100%;display:flex;flex-direction:column;padding-inline:var(--gutter);overflow-x:hidden;overflow-x:clip}
 
-.page{position:relative;z-index:1;min-height:100%;display:flex;flex-direction:column;padding-inline:var(--gutter);overflow-x:hidden;overflow-x:clip}
-.mast{padding-top:clamp(22px,4.5vh,44px);text-align:center}
-.mast h1{margin:0;padding-left:.55em;font:400 clamp(2rem,1.35rem + 2.6vw,3.1rem)/1 var(--display);letter-spacing:.55em;color:var(--text);text-shadow:0 0 22px rgb(196 120 204 / .5)}
-.coords{margin:.75rem 0 0;padding-left:.26em;font:400 .7rem/1 var(--mono);letter-spacing:.26em;color:var(--text-3);font-variant-numeric:tabular-nums}
+/* Masthead */
+.mast{padding-top:clamp(20px,4vh,40px);display:flex;flex-direction:column;align-items:center;gap:.45rem;text-align:center}
+.mast h1{margin:0;display:flex;align-items:center;gap:clamp(14px,2.2vw,22px);font:400 clamp(1.45rem,1.1rem + 1.4vw,2.1rem)/1 var(--display);letter-spacing:.5em;color:var(--gold)}
+.mast h1 span{margin-right:-.5em}
+.mast h1::before,.mast h1::after{content:"";width:clamp(26px,7vw,84px);height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.mast h1::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.coords{margin:0;font:500 .95rem/1 var(--serif);font-variant-caps:all-small-caps;letter-spacing:.2em;color:var(--muted)}
 
-.stage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(18px,3.2vh,30px);padding-block:clamp(18px,4vh,40px);text-align:center}
-.sign{position:relative;margin:0;width:min(460px,84vw,56vh);width:min(460px,84vw,56svh)}
-.sign::before{content:"";position:absolute;inset:-30% -24%;z-index:-1;background:radial-gradient(closest-side,rgb(176 77 180 / .42),rgb(138 40 139 / .16) 58%,transparent 76%);animation:halo 2.4s ease-out both}
-.sign img{display:block;width:100%;height:auto;border-radius:6px;box-shadow:0 0 0 1px rgb(255 255 255 / .07),0 0 26px rgb(176 77 180 / .55),0 0 90px rgb(138 40 139 / .45),0 30px 70px rgb(0 0 0 / .6);animation:poweron 1.8s cubic-bezier(.2,.7,.2,1) both}
-@keyframes poweron{from{opacity:.3;filter:brightness(.5) saturate(.7)}to{opacity:1;filter:none}}
-@keyframes halo{from{opacity:.15;transform:scale(.88)}to{opacity:1;transform:none}}
+/* The sign, framed, with glory rays */
+.stage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(22px,3.6vh,36px);padding-block:clamp(26px,4.5vh,48px) clamp(20px,3vh,32px);text-align:center}
+.halo{position:relative;isolation:isolate;width:min(430px,84vw,46vh);width:min(430px,84vw,46svh)}
+.halo::before{content:"";position:absolute;inset:-62%;z-index:-1;pointer-events:none;
+  background:radial-gradient(closest-side,rgb(216 172 88 / .3),rgb(138 40 139 / .18) 46%,transparent 70%),repeating-conic-gradient(from -90deg,rgb(244 218 152 / .2) 0deg 1deg,transparent 1deg 6deg);
+  -webkit-mask-image:radial-gradient(closest-side,#000 24%,rgb(0 0 0 / .5) 48%,transparent 74%);
+          mask-image:radial-gradient(closest-side,#000 24%,rgb(0 0 0 / .5) 48%,transparent 74%);
+  animation:glory 2.4s ease-out both}
+.medallion{display:block;width:100%;height:auto;aspect-ratio:1;overflow:visible;filter:drop-shadow(0 22px 46px rgb(0 0 0 / .5));animation:hang 1.3s cubic-bezier(.2,.7,.2,1) both}
+.medallion .word{font-family:var(--display);fill:#FFFFFF}
+@keyframes glory{from{opacity:.2;transform:scale(.92) rotate(-4deg)}to{opacity:1;transform:none}}
+@keyframes hang{from{opacity:.4;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-.verse{margin:0;max-width:40ch}
-.verse p{margin:0;font:400 clamp(.98rem,.9rem + .35vw,1.12rem)/1.75 var(--mono);color:var(--text-2);text-wrap:balance}
-.verse cite{display:inline-block;margin-top:.8rem;padding-left:.3em;font:700 .72rem/1 var(--mono);font-style:normal;letter-spacing:.3em;text-transform:uppercase;color:var(--lilac)}
+/* Romans 5:8 */
+.verse{margin:0;display:grid;justify-items:center;gap:.85rem}
+.verse p{margin:0;max-width:28ch;font:italic 400 clamp(1.32rem,1.05rem + 1.05vw,1.72rem)/1.42 var(--serif);color:var(--cream);text-wrap:balance}
+.verse .q{color:var(--gold)}
+.verse cite{display:flex;align-items:center;gap:.75rem;font:500 1.1rem/1 var(--serif);font-style:normal;font-variant-caps:all-small-caps;letter-spacing:.24em;color:var(--gold)}
+.verse cite span{margin-right:-.24em}
+.verse cite::before,.verse cite::after{content:"";width:clamp(22px,4vw,36px);height:1px;background:var(--line)}
 
 /* Learn more + ZIP finder */
-.cta{display:flex;flex-direction:column;align-items:center;gap:.65rem}
-.learn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:3.6rem;padding:.85rem 1.9rem .9rem 2.3rem;border:0;border-radius:999px;background:var(--white);color:var(--sign-deep);font:800 1.32rem/1 var(--sans);letter-spacing:.01em;cursor:pointer;box-shadow:0 10px 28px rgb(0 0 0 / .45),0 0 34px rgb(176 77 180 / .35);transition:transform .15s ease,box-shadow .15s ease}
-.learn:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgb(0 0 0 / .5),0 0 46px rgb(176 77 180 / .5)}
+.cta{display:flex;flex-direction:column;align-items:center;gap:.7rem}
+.learn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:3.6rem;padding:.85rem 1.95rem .9rem 2.35rem;border:0;border-radius:999px;background:linear-gradient(180deg,var(--gold-hi) 0%,var(--gold) 55%,var(--gold-lo) 100%);color:var(--ink);font:800 1.32rem/1 var(--sans);letter-spacing:.01em;cursor:pointer;box-shadow:inset 0 1px 0 rgb(255 255 255 / .6),inset 0 -2px 0 rgb(110 70 15 / .3),0 12px 28px rgb(0 0 0 / .5),0 0 44px rgb(216 172 88 / .3);transition:transform .15s ease,box-shadow .15s ease}
+.learn:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgb(255 255 255 / .6),inset 0 -2px 0 rgb(110 70 15 / .3),0 16px 34px rgb(0 0 0 / .55),0 0 58px rgb(216 172 88 / .45)}
 .learn:active{transform:none}
-.learn:focus-visible{outline:3px solid var(--white);outline-offset:4px}
+.learn:focus-visible{outline:3px solid var(--cream);outline-offset:4px}
+.learn::before,.learn::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 30%,rgb(255 255 255 / .55) 50%,transparent 70%);transform:translateX(-130%)}
+.learn::before{animation:shine 1.2s ease-in-out 1.5s 1 both}
+.learn::after{transition:transform .8s ease}
+.learn:hover::after{transform:translateX(130%)}
+@keyframes shine{to{transform:translateX(130%)}}
+.learn span,.learn svg{position:relative;z-index:1}
 .learn svg{width:1.05em;height:1.05em;flex:none;transition:transform .2s ease}
 .learn[aria-expanded="true"] svg{transform:rotate(180deg)}
-.cta-note{margin:0;font:500 1.02rem/1.35 var(--sans);color:var(--text-2)}
+.cta-note{margin:0;font:500 1.04rem/1.35 var(--sans);color:var(--cream-2)}
 
-.finder{color-scheme:light;width:min(100%,31rem);display:grid;gap:.65rem;padding:1.2rem 1.2rem 1.05rem;border-radius:18px;background:var(--card);color:var(--ink);text-align:left;box-shadow:0 18px 44px rgb(0 0 0 / .55)}
+.finder{color-scheme:light;width:min(100%,31rem);display:grid;grid-template-columns:minmax(0,1fr);gap:.65rem;padding:1.15rem 1.2rem 1.05rem;border-radius:14px;border-top:3px solid var(--gold);background:var(--card);color:var(--ink);text-align:left;box-shadow:0 18px 44px rgb(0 0 0 / .55)}
 .finder.is-in{animation:rise .26s ease-out}
-@keyframes rise{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes rise{from{opacity:.3;transform:translateY(-8px)}to{opacity:1;transform:none}}
 .finder label{font:700 1.02rem/1.2 var(--sans)}
 .finder-row{display:flex;flex-wrap:wrap;gap:.6rem}
-.finder input{flex:1 1 8.5rem;min-width:0;min-height:3.3rem;padding:.55rem .95rem;border:2px solid var(--rule);border-radius:12px;background:var(--field);color:var(--ink);font:700 1.4rem/1 var(--sans);letter-spacing:.16em;font-variant-numeric:tabular-nums}
-.finder input:focus{outline:none;border-color:var(--sign);box-shadow:0 0 0 3px color-mix(in srgb,var(--sign) 30%,transparent)}
-.go{flex:1 1 auto;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:3.3rem;padding:.55rem 1.1rem;border-radius:12px;background:var(--sign);color:var(--white);font:700 1.08rem/1.15 var(--sans);text-decoration:none;text-align:center;transition:background-color .15s ease}
+.finder input{flex:1 1 8.5rem;min-width:0;min-height:3.3rem;padding:.55rem .95rem;border:2px solid var(--rule);border-radius:12px;background:#FFFFFF;color:var(--ink);font:700 1.4rem/1 var(--sans);letter-spacing:.16em;font-variant-numeric:tabular-nums}
+.finder input:focus{outline:none;border-color:var(--sign);box-shadow:0 0 0 3px rgb(138 40 139 / .25)}
+.go{flex:1 1 auto;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:3.3rem;padding:.55rem 1.1rem;border-radius:12px;background:var(--sign);color:#FFFFFF;font:700 1.08rem/1.15 var(--sans);text-decoration:none;text-align:center;transition:background-color .15s ease}
 .go:hover{background:var(--sign-deep)}
-.go:focus-visible{outline:3px solid var(--link);outline-offset:3px}
+.go:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .go svg{width:1em;height:1em;flex:none}
-.finder-msg{margin:0;font:400 .96rem/1.45 var(--sans);color:var(--muted)}
+.finder-msg{margin:0;font:400 .96rem/1.45 var(--sans);color:var(--ink-2)}
 .finder-msg.is-error{color:var(--error);font-weight:700}
 
-.foot{padding-block:14px 18px;text-align:center;font:400 .68rem/1.5 var(--mono);letter-spacing:.05em;color:var(--text-3)}
-.foot p{margin:0}
+.foot{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px 20px;width:min(100%,980px);margin-inline:auto;padding-block:14px 20px}
+.foot-rose-link{justify-self:start;display:block;border-radius:50%;transition:transform .2s ease,filter .2s ease}
+.foot-rose-link:hover{transform:scale(1.05);filter:drop-shadow(0 0 14px rgb(216 172 88 / .45))}
+.foot-rose-link:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.foot-rose{display:block;width:clamp(84px,9vw,108px);height:auto;filter:drop-shadow(0 4px 10px rgb(0 0 0 / .45))}
+.foot-credit{margin:0;max-width:36ch;text-align:center;font:400 .74rem/1.5 var(--sans);color:var(--muted)}
+.foot-lcms{justify-self:end;margin-right:-.3em;font:400 2.025rem/1 var(--display);letter-spacing:.3em;color:var(--gold);text-decoration:none}
+.foot-lcms:hover{color:var(--gold-hi);text-decoration:underline;text-underline-offset:3px}
 
-/* Contact ribbon tab + panel */
-.tab{position:fixed;top:0;right:var(--edge);z-index:5;display:flex;align-items:center;justify-content:center;width:70px;height:calc(84px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 0 16px;border:0;cursor:pointer;color:var(--white);background:linear-gradient(180deg,#A03AA6 0%,var(--sign) 55%,#6C1C72 100%);clip-path:polygon(0 0,100% 0,100% 100%,50% calc(100% - 14px),0 100%);font:700 .68rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;transition:height .2s ease}
-.tab:hover,.tab[aria-expanded="true"]{height:calc(94px + env(safe-area-inset-top,0px))}
-.tab:focus-visible{outline:3px solid var(--white);outline-offset:-7px}
-.tab span{margin-right:-.18em}
+/* Ribbons: two hymnal ribbon markers (Contact left, About OCS right) and the card they open */
+.ribbon{position:fixed;top:0;z-index:5;display:flex;align-items:center;justify-content:center;width:46px;height:calc(140px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 0 16px;border:0;cursor:pointer;background:linear-gradient(90deg,var(--gold-hi) 0,var(--gold) 2px,var(--sign) 2px,var(--sign) calc(100% - 2px),var(--gold) calc(100% - 2px),var(--gold-hi) 100%);clip-path:polygon(0 0,100% 0,100% 100%,50% calc(100% - 14px),0 100%);color:var(--cream);font:700 .68rem/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;transition:height .2s ease}
+.ribbon-left{left:var(--edge)}
+.ribbon-right{right:var(--edge)}
+.ribbon span{writing-mode:vertical-rl;white-space:nowrap;margin-bottom:-.24em}
+.ribbon:hover,.ribbon[aria-expanded="true"]{height:calc(150px + env(safe-area-inset-top,0px))}
+.ribbon:focus-visible{outline:2px solid var(--cream);outline-offset:-6px}
 
-.contact{position:fixed;z-index:6;top:calc(env(safe-area-inset-top,0px) + 104px);right:var(--edge);width:min(340px,calc(100vw - 28px));padding:22px 22px 18px;border:1px solid var(--glass-line);border-radius:16px;background:var(--glass);box-shadow:0 24px 60px rgb(0 0 0 / .6),0 0 40px rgb(138 40 139 / .28);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);text-align:left}
+.contact{position:fixed;z-index:6;top:calc(env(safe-area-inset-top,0px) + 22px);width:min(340px,calc(100vw - 28px));padding:22px 22px 18px;border:1px solid var(--line);border-radius:14px;background:var(--glass);box-shadow:0 24px 60px rgb(0 0 0 / .6),0 0 40px rgb(216 172 88 / .12);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);text-align:left}
+.contact[data-side="left"]{left:calc(var(--edge) + 60px)}
+.contact[data-side="right"]{right:calc(var(--edge) + 60px)}
+.contact .soon{margin:0 0 .55rem;padding-right:28px;font:italic 400 1.02rem/1.35 var(--serif);color:var(--gold)}
 .contact.is-in{animation:drop .22s ease-out}
-@keyframes drop{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
-.contact h2{margin:0;padding-right:28px;font:400 1.5rem/1.15 var(--display);letter-spacing:.02em;color:var(--text);outline:none}
-.contact .role{margin:.45rem 0 1.15rem;font:400 .76rem/1.4 var(--mono);letter-spacing:.05em;color:var(--text-3)}
+@keyframes drop{from{opacity:.3;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.contact h2{margin:0;padding-right:28px;font:400 1.45rem/1.15 var(--display);color:var(--cream);outline:none}
+.contact .role{margin:.4rem 0 1.1rem;font:500 1.02rem/1.3 var(--serif);font-variant-caps:all-small-caps;letter-spacing:.08em;color:var(--gold)}
 .contact dl{margin:0;display:grid;gap:14px}
-.contact dt{margin:0 0 .35rem;font:700 .66rem/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--lilac)}
+.contact dt{margin:0 0 .35rem;font:700 .66rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
 .contact dd{margin:0;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.6rem}
-.contact dd a{min-width:0;overflow-wrap:anywhere;color:var(--text);text-decoration:none;font:700 1.28rem/1.2 var(--sans);font-variant-numeric:tabular-nums}
+.contact dd a{min-width:0;overflow-wrap:anywhere;color:var(--cream);text-decoration:none;font:700 1.26rem/1.2 var(--sans);font-variant-numeric:tabular-nums}
 .contact dd a.email{font-size:1rem}
-.contact dd a:hover{text-decoration:underline;text-underline-offset:3px}
-.copy{padding:.4rem .66rem;border:1px solid var(--glass-line);border-radius:8px;background:transparent;color:var(--text-2);font:700 .7rem/1 var(--mono);letter-spacing:.08em;cursor:pointer}
-.copy:hover{border-color:var(--text-2);color:var(--text)}
-.copy:focus-visible{outline:2px solid var(--lilac);outline-offset:2px}
-.church{margin:1.15rem 0 0;padding-top:.9rem;border-top:1px solid var(--glass-line);font:400 .88rem/1.45 var(--sans);color:var(--text-2)}
-.close{position:absolute;top:10px;right:10px;width:36px;height:36px;border:0;border-radius:50%;background:transparent;color:var(--text-2);font:400 1.5rem/1 var(--sans);cursor:pointer}
-.close:hover{background:rgb(255 255 255 / .08);color:var(--text)}
-.close:focus-visible{outline:2px solid var(--lilac);outline-offset:1px}
+.contact dd a:hover{color:var(--gold-hi);text-decoration:underline;text-underline-offset:3px}
+.copy{padding:.4rem .66rem;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--gold);font:700 .72rem/1 var(--sans);letter-spacing:.06em;cursor:pointer}
+.copy:hover{border-color:var(--gold);color:var(--gold-hi)}
+.copy:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.church{margin:1.1rem 0 0;padding-top:.85rem;border-top:1px solid var(--line);font:400 1rem/1.4 var(--serif);color:var(--cream-2)}
+.close{position:absolute;top:10px;right:10px;width:36px;height:36px;border:0;border-radius:50%;background:transparent;color:var(--cream-2);font:400 1.5rem/1 var(--sans);cursor:pointer}
+.close:hover{background:rgb(255 255 255 / .08);color:var(--cream)}
+.close:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
 
-@media (max-width:520px){.contact{left:14px;right:14px;width:auto}}
+@media (max-width:560px){
+  .ribbon{width:40px;height:calc(118px + env(safe-area-inset-top,0px))}
+  .ribbon:hover,.ribbon[aria-expanded="true"]{height:calc(126px + env(safe-area-inset-top,0px))}
+  .contact,.contact[data-side]{top:calc(env(safe-area-inset-top,0px) + 136px);left:14px;right:14px;width:auto}
+  .foot{grid-template-columns:auto auto;justify-content:space-between}
+  .foot-credit{grid-column:1 / -1;grid-row:2;justify-self:center}
+}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
-<noscript><style>#finder[hidden],#contact[hidden]{display:grid!important}#contact{position:static;margin:16px auto;width:min(340px,100%)}#learn,#contact-tab,#contact-close{display:none}</style></noscript>
+<noscript><style>#finder[hidden],#contact[hidden]{display:grid!important}#contact{position:static;margin:16px auto;width:min(340px,100%)}#learn,.ribbon,#contact-close{display:none}</style></noscript>
 </head>
 <body>
-<canvas id="sky" aria-hidden="true"></canvas>
+<button type="button" class="ribbon ribbon-left" id="contact-tab" data-side="left" aria-expanded="false" aria-controls="contact"><span>Contact</span></button>
+<button type="button" class="ribbon ribbon-right" id="about-tab" data-side="right" aria-expanded="false" aria-controls="contact"><span>About OCS</span></button>
 
-<button type="button" class="tab" id="contact-tab" aria-expanded="false" aria-controls="contact"><span>Contact</span></button>
-
-<section class="contact" id="contact" aria-labelledby="contact-name" hidden>
+<section class="contact" id="contact" data-side="left" aria-labelledby="contact-name" hidden>
   <button type="button" class="close" id="contact-close" aria-label="Close contact">×</button>
+  <p class="soon" id="contact-soon" hidden>More about OCS is coming soon.</p>
   <h2 id="contact-name" tabindex="-1">Pastor John Graham</h2>
   <p class="role">Lutheran Church—Missouri Synod</p>
   <dl>
     <div>
       <dt>Call</dt>
-      <dd><a id="phone" href="tel:+13038382161">303-838-2161</a><button type="button" class="copy" data-copy="303-838-2161" data-target="phone">Copy</button></dd>
+      <dd><a id="phone" href="tel:+17195009241">719-500-9241</a><button type="button" class="copy" data-copy="719-500-9241" data-target="phone">Copy</button></dd>
     </div>
     <div>
       <dt>Email</dt>
@@ -155,22 +192,39 @@ a:focus-visible{outline:3px solid var(--lilac);outline-offset:3px;border-radius:
 
 <div class="page">
   <header class="mast">
-    <h1>OCS</h1>
+    <h1><span>OCS</span></h1>
     <p class="coords">39.41° N · 105.47° W</p>
   </header>
 
   <main class="stage">
-    <figure class="sign">
-      <img src="ocs-logo.png" width="1400" height="1165" alt="God loves you this much: Jesus on the cross with His arms stretched wide. www.ocs.church">
-    </figure>
+    <div class="halo">
+      <svg class="medallion" viewBox="0 0 600 600" role="img" aria-labelledby="medallion-title">
+        <title id="medallion-title">God loves you this much: Jesus on the cross with His arms stretched wide</title>
+        <defs>
+          <radialGradient id="disc-shade" cx="50%" cy="50%" r="50%">
+            <stop offset=".72" stop-color="#000000" stop-opacity="0"/>
+            <stop offset="1" stop-color="#000000" stop-opacity=".18"/>
+          </radialGradient>
+          <path id="crown" d="M78 300A222 222 0 0 1 522 300"/>
+        </defs>
+        <circle cx="300" cy="300" r="295" fill="none" stroke="#D8AC58" stroke-width="1.2"/>
+        <circle cx="300" cy="300" r="286" fill="#8A288B"/>
+        <circle cx="300" cy="300" r="286" fill="url(#disc-shade)" stroke="#F4DA98" stroke-width="2.5"/>
+        <circle cx="300" cy="300" r="273" fill="none" stroke="#D8AC58" stroke-opacity=".55" stroke-width="1"/>
+        <text class="word" font-size="44" letter-spacing="3.5" text-anchor="middle"><textPath href="#crown" xlink:href="#crown" startOffset="50%">GOD LOVES YOU</textPath></text>
+        <image href="ocs-figure.png" xlink:href="ocs-figure.png" x="173" y="148" width="246" height="360"/>
+        <text class="word" x="254" y="310" font-size="50" letter-spacing="6" text-anchor="end">THIS</text>
+        <text class="word" x="336" y="310" font-size="50" letter-spacing="3" text-anchor="start">MUCH</text>
+      </svg>
+    </div>
 
     <blockquote class="verse">
-      <p>“But God shows his love for us in that while we were still sinners, Christ died for us.”</p>
-      <cite>Romans 5:8 ESV</cite>
+      <p><span class="q">“</span>But God shows his love for us in that while we were still sinners, Christ died for us.<span class="q">”</span></p>
+      <cite><span>Romans 5:8</span></cite>
     </blockquote>
 
     <div class="cta">
-      <button type="button" class="learn" id="learn" aria-expanded="false" aria-controls="finder">Learn more
+      <button type="button" class="learn" id="learn" aria-expanded="false" aria-controls="finder"><span>Learn more</span>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <p class="cta-note">Find a Lutheran church near you</p>
@@ -179,7 +233,7 @@ a:focus-visible{outline:3px solid var(--lilac);outline-offset:3px;border-radius:
     <form class="finder" id="finder" novalidate>
       <label for="zip">Enter your ZIP code</label>
       <div class="finder-row">
-        <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" aria-describedby="zip-msg">
+        <input id="zip" name="zip" type="text" size="5" inputmode="numeric" autocomplete="postal-code" aria-describedby="zip-msg">
         <a class="go" id="go" href="https://locator.lcms.org/church" target="_blank" rel="noopener">Show nearby churches
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -188,7 +242,11 @@ a:focus-visible{outline:3px solid var(--lilac);outline-offset:3px;border-radius:
     </form>
   </main>
 
-  <footer class="foot"><p>Scripture quotation from the ESV® Bible, © 2001 by Crossway. Used by permission.</p></footer>
+  <footer class="foot">
+    <a class="foot-rose-link" href="christianity.html" title="A Simple Explanation Of Christianity"><img class="foot-rose" src="luther-rose.png" width="150" height="150" alt="Luther's Rose: A Simple Explanation Of Christianity"></a>
+    <p class="foot-credit">Scripture quotation from the ESV® Bible, © 2001 by Crossway. Used by permission.</p>
+    <a class="foot-lcms" href="https://www.lcms.org" target="_blank" rel="noopener" title="The Lutheran Church—Missouri Synod">LCMS</a>
+  </footer>
 </div>
 
 <script>
@@ -222,18 +280,22 @@ a:focus-visible{outline:3px solid var(--lilac);outline-offset:3px;border-radius:
   zip.dispatchEvent(new Event('input'));
 })();
 
-/* Contact tab */
+/* Ribbons: Contact (left) and About OCS (right) both open the contact card for now */
 (function(){
-  var tab=document.getElementById('contact-tab'),panel=document.getElementById('contact'),close=document.getElementById('contact-close'),title=document.getElementById('contact-name');
-  function set(open,refocus){
-    panel.hidden=!open;tab.setAttribute('aria-expanded',String(open));
-    if(open){panel.classList.remove('is-in');void panel.offsetWidth;panel.classList.add('is-in');title.focus({preventScroll:true});}
-    else if(refocus){tab.focus();}
+  var tabs=[].slice.call(document.querySelectorAll('.ribbon')),panel=document.getElementById('contact'),close=document.getElementById('contact-close'),title=document.getElementById('contact-name'),soon=document.getElementById('contact-soon'),opener=null;
+  function open(tab){
+    opener=tab;panel.setAttribute('data-side',tab.getAttribute('data-side'));soon.hidden=tab.id!=='about-tab';
+    tabs.forEach(function(t){t.setAttribute('aria-expanded',String(t===tab));});
+    panel.hidden=false;panel.classList.remove('is-in');void panel.offsetWidth;panel.classList.add('is-in');title.focus({preventScroll:true});
   }
-  tab.addEventListener('click',function(){set(panel.hidden,false);});
-  close.addEventListener('click',function(){set(false,true);});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden)set(false,true);});
-  document.addEventListener('click',function(e){if(!panel.hidden&&!panel.contains(e.target)&&!tab.contains(e.target))set(false,false);});
+  function shut(refocus){
+    panel.hidden=true;tabs.forEach(function(t){t.setAttribute('aria-expanded','false');});
+    if(refocus&&opener)opener.focus();opener=null;
+  }
+  tabs.forEach(function(tab){tab.addEventListener('click',function(){if(!panel.hidden&&opener===tab)shut(false);else open(tab);});});
+  close.addEventListener('click',function(){shut(true);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden)shut(true);});
+  document.addEventListener('click',function(e){if(!panel.hidden&&!panel.contains(e.target)&&!tabs.some(function(t){return t.contains(e.target);}))shut(false);});
   document.querySelectorAll('[data-copy]').forEach(function(btn){
     btn.addEventListener('click',function(){
       function show(t){btn.textContent=t;setTimeout(function(){btn.textContent='Copy';},1600);}
@@ -241,58 +303,7 @@ a:focus-visible{outline:3px solid var(--lilac);outline-offset:3px;border-radius:
       if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(btn.dataset.copy).then(function(){show('Copied');},fallback);}else{fallback();}
     });
   });
-  if(location.hash==='#contact')set(true,false);
-})();
-
-/* Night sky over the Rockies: seeded stars, a few that twinkle, two ridgelines and a small cross */
-(function(){
-  var cv=document.getElementById('sky');if(!cv||!cv.getContext)return;
-  var ctx=cv.getContext('2d'),base=document.createElement('canvas'),bctx=base.getContext('2d'),front=document.createElement('canvas'),fctx=front.getContext('2d');
-  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var W,H,dpr,tw=[],raf=0,last=0,timer=0;
-  function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
-  function ridge(r,y0,amp,segs){
-    var f=[1+r()*.8,2.6+r()*1.6,6+r()*4],p=[r()*6.3,r()*6.3,r()*6.3],w=[.55,.3,.15],pts=[];
-    for(var i=0;i<=segs;i++){var u=i/segs,v=0;for(var k=0;k<3;k++)v+=w[k]*Math.sin(u*f[k]*Math.PI*2+p[k]);v+=(r()-.5)*.1;pts.push([u*W,y0-amp*(.5+.5*v)]);}
-    return pts;
-  }
-  function fill(c,pts,color){c.beginPath();c.moveTo(0,H);for(var i=0;i<pts.length;i++)c.lineTo(pts[i][0],pts[i][1]);c.lineTo(W,H);c.closePath();c.fillStyle=color;c.fill();}
-  function build(){
-    dpr=Math.min(window.devicePixelRatio||1,2);W=window.innerWidth;H=window.innerHeight;
-    [cv,base,front].forEach(function(c){c.width=Math.round(W*dpr);c.height=Math.round(H*dpr);});
-    var r=rng(19);
-    bctx.setTransform(dpr,0,0,dpr,0,0);
-    var g=bctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#05020A');g.addColorStop(.5,'#10061A');g.addColorStop(.82,'#260C30');g.addColorStop(1,'#1A0822');
-    bctx.fillStyle=g;bctx.fillRect(0,0,W,H);
-    var far=ridge(r,H*.9,H*.13,72),near=ridge(r,H*.975,H*.07,72);
-    var top=Math.min.apply(null,far.map(function(q){return q[1];}));
-    var n=Math.max(120,Math.min(700,Math.round(W*H/2300)));tw=[];
-    for(var i=0;i<n;i++){
-      var x=r()*W,y=Math.pow(r(),1.3)*(top-6),big=r()<.06,s=big?1.1+r()*.8:.3+r()*.7,a=.3+r()*.65,c=r()<.3?'#E9CFF2':'#FFFFFF';
-      if(!big&&r()<.1){tw.push({x:x,y:y,s:s+.15,a:a,c:c,sp:.0008+r()*.0018,ph:r()*6.3});continue;}
-      if(big){var rg=bctx.createRadialGradient(x,y,0,x,y,s*4);rg.addColorStop(0,'rgba(255,240,255,'+(a*.5).toFixed(2)+')');rg.addColorStop(1,'rgba(255,240,255,0)');bctx.fillStyle=rg;bctx.fillRect(x-s*4,y-s*4,s*8,s*8);}
-      bctx.globalAlpha=a;bctx.fillStyle=c;bctx.beginPath();bctx.arc(x,y,s,0,6.2832);bctx.fill();bctx.globalAlpha=1;
-    }
-    fctx.setTransform(dpr,0,0,dpr,0,0);fctx.clearRect(0,0,W,H);
-    fill(fctx,far,'#1C0A24');
-    var q=far[Math.round(far.length*.79)],cx=q[0],cy=q[1]+1;
-    fctx.fillStyle='#1C0A24';fctx.fillRect(cx-1.1,cy-16,2.2,17);fctx.fillRect(cx-4.5,cy-12.5,9,2);
-    fill(fctx,near,'#07030A');
-    paint(0);
-  }
-  function paint(t){
-    ctx.setTransform(1,0,0,1,0,0);ctx.drawImage(base,0,0);
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    for(var i=0;i<tw.length;i++){var s=tw[i];ctx.globalAlpha=s.a*(.5+.5*Math.sin(t*s.sp+s.ph));ctx.fillStyle=s.c;ctx.beginPath();ctx.arc(s.x,s.y,s.s,0,6.2832);ctx.fill();}
-    ctx.globalAlpha=1;ctx.setTransform(1,0,0,1,0,0);ctx.drawImage(front,0,0);
-  }
-  function loop(t){raf=requestAnimationFrame(loop);if(t-last<50)return;last=t;paint(t);}
-  build();
-  if(!reduce){
-    raf=requestAnimationFrame(loop);
-    document.addEventListener('visibilitychange',function(){cancelAnimationFrame(raf);if(!document.hidden)raf=requestAnimationFrame(loop);});
-  }
-  window.addEventListener('resize',function(){clearTimeout(timer);timer=setTimeout(build,150);});
+  if(location.hash==='#contact')open(document.getElementById('contact-tab'));
 })();
 </script>
 </body>
