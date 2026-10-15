@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OCS</title>
+<meta name="description" content="God loves you this much. Find a Lutheran church near you.">
+<link rel="canonical" href="https://ocs.church/">
+<meta name="theme-color" content="#08040B">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OCS">
+<meta property="og:url" content="https://ocs.church/">
+<meta property="og:title" content="OCS">
+<meta property="og:description" content="God loves you this much. Find a Lutheran church near you.">
+<meta property="og:image" content="https://ocs.church/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A purple sign reading God loves you this much, with Jesus on the cross.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700;800&family=Courier+Prime:wght@400;700&family=Marcellus&display=swap">
+<style>
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+[hidden]{display:none!important}
+/* Layout: one night screen. The OCS sign glows at center like a roadside sign after dark, masthead above, Romans 5:8 below, a ribbon tab for contact. Single dark world by design. */
+:root{
+  color-scheme:dark;
+  --night:#08040B;
+  --sign:#8A288B;          /* exact purple of the OCS sign */
+  --sign-deep:#5E1F66;
+  --lilac:#C99BD0;
+  --text:#F5ECF7;
+  --text-2:#D9C6DF;
+  --text-3:#9A82A3;
+  --white:#FFFFFF;
+  --glass:rgba(20,9,26,.95);
+  --glass-line:rgba(205,160,215,.24);
+  --card:#FFFFFF;
+  --ink:#26132B;
+  --muted:#685470;
+  --rule:#E6D7E9;
+  --field:#FBF7FC;
+  --error:#A3123A;
+  --link:#7B2C84;
+  --display:"Marcellus","Trajan Pro",Georgia,serif;
+  --mono:"Courier Prime","Courier New",ui-monospace,monospace;
+  --sans:"Alegreya Sans","Gill Sans","Segoe UI",system-ui,sans-serif;
+  --gutter:max(16px,4.5vw);
+  --edge:clamp(14px,3vw,36px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--night);color:var(--text);font:400 1rem/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a:focus-visible{outline:3px solid var(--lilac);outline-offset:3px;border-radius:4px}
+#sky{position:fixed;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0}
+
+.page{position:relative;z-index:1;min-height:100%;display:flex;flex-direction:column;padding-inline:var(--gutter);overflow-x:hidden;overflow-x:clip}
+.mast{padding-top:clamp(22px,4.5vh,44px);text-align:center}
+.mast h1{margin:0;padding-left:.55em;font:400 clamp(2rem,1.35rem + 2.6vw,3.1rem)/1 var(--display);letter-spacing:.55em;color:var(--text);text-shadow:0 0 22px rgb(196 120 204 / .5)}
+.coords{margin:.75rem 0 0;padding-left:.26em;font:400 .7rem/1 var(--mono);letter-spacing:.26em;color:var(--text-3);font-variant-numeric:tabular-nums}
+
+.stage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(18px,3.2vh,30px);padding-block:clamp(18px,4vh,40px);text-align:center}
+.sign{position:relative;margin:0;width:min(460px,84vw,56vh);width:min(460px,84vw,56svh)}
+.sign::before{content:"";position:absolute;inset:-30% -24%;z-index:-1;background:radial-gradient(closest-side,rgb(176 77 180 / .42),rgb(138 40 139 / .16) 58%,transparent 76%);animation:halo 2.4s ease-out both}
+.sign img{display:block;width:100%;height:auto;border-radius:6px;box-shadow:0 0 0 1px rgb(255 255 255 / .07),0 0 26px rgb(176 77 180 / .55),0 0 90px rgb(138 40 139 / .45),0 30px 70px rgb(0 0 0 / .6);animation:poweron 1.8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes poweron{from{opacity:.3;filter:brightness(.5) saturate(.7)}to{opacity:1;filter:none}}
+@keyframes halo{from{opacity:.15;transform:scale(.88)}to{opacity:1;transform:none}}
+
+.verse{margin:0;max-width:40ch}
+.verse p{margin:0;font:400 clamp(.98rem,.9rem + .35vw,1.12rem)/1.75 var(--mono);color:var(--text-2);text-wrap:balance}
+.verse cite{display:inline-block;margin-top:.8rem;padding-left:.3em;font:700 .72rem/1 var(--mono);font-style:normal;letter-spacing:.3em;text-transform:uppercase;color:var(--lilac)}
+
+/* Learn more + ZIP finder */
+.cta{display:flex;flex-direction:column;align-items:center;gap:.65rem}
+.learn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:3.6rem;padding:.85rem 1.9rem .9rem 2.3rem;border:0;border-radius:999px;background:var(--white);color:var(--sign-deep);font:800 1.32rem/1 var(--sans);letter-spacing:.01em;cursor:pointer;box-shadow:0 10px 28px rgb(0 0 0 / .45),0 0 34px rgb(176 77 180 / .35);transition:transform .15s ease,box-shadow .15s ease}
+.learn:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgb(0 0 0 / .5),0 0 46px rgb(176 77 180 / .5)}
+.learn:active{transform:none}
+.learn:focus-visible{outline:3px solid var(--white);outline-offset:4px}
+.learn svg{width:1.05em;height:1.05em;flex:none;transition:transform .2s ease}
+.learn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.cta-note{margin:0;font:500 1.02rem/1.35 var(--sans);color:var(--text-2)}
+
+.finder{color-scheme:light;width:min(100%,31rem);display:grid;gap:.65rem;padding:1.2rem 1.2rem 1.05rem;border-radius:18px;background:var(--card);color:var(--ink);text-align:left;box-shadow:0 18px 44px rgb(0 0 0 / .55)}
+.finder.is-in{animation:rise .26s ease-out}
+@keyframes rise{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.finder label{font:700 1.02rem/1.2 var(--sans)}
+.finder-row{display:flex;flex-wrap:wrap;gap:.6rem}
+.finder input{flex:1 1 8.5rem;min-width:0;min-height:3.3rem;padding:.55rem .95rem;border:2px solid var(--rule);border-radius:12px;background:var(--field);color:var(--ink);font:700 1.4rem/1 var(--sans);letter-spacing:.16em;font-variant-numeric:tabular-nums}
+.finder input:focus{outline:none;border-color:var(--sign);box-shadow:0 0 0 3px color-mix(in srgb,var(--sign) 30%,transparent)}
+.go{flex:1 1 auto;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:3.3rem;padding:.55rem 1.1rem;border-radius:12px;background:var(--sign);color:var(--white);font:700 1.08rem/1.15 var(--sans);text-decoration:none;text-align:center;transition:background-color .15s ease}
+.go:hover{background:var(--sign-deep)}
+.go:focus-visible{outline:3px solid var(--link);outline-offset:3px}
+.go svg{width:1em;height:1em;flex:none}
+.finder-msg{margin:0;font:400 .96rem/1.45 var(--sans);color:var(--muted)}
+.finder-msg.is-error{color:var(--error);font-weight:700}
+
+.foot{padding-block:14px 18px;text-align:center;font:400 .68rem/1.5 var(--mono);letter-spacing:.05em;color:var(--text-3)}
+.foot p{margin:0}
+
+/* Contact ribbon tab + panel */
+.tab{position:fixed;top:0;right:var(--edge);z-index:5;display:flex;align-items:center;justify-content:center;width:70px;height:calc(84px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 0 16px;border:0;cursor:pointer;color:var(--white);background:linear-gradient(180deg,#A03AA6 0%,var(--sign) 55%,#6C1C72 100%);clip-path:polygon(0 0,100% 0,100% 100%,50% calc(100% - 14px),0 100%);font:700 .68rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;transition:height .2s ease}
+.tab:hover,.tab[aria-expanded="true"]{height:calc(94px + env(safe-area-inset-top,0px))}
+.tab:focus-visible{outline:3px solid var(--white);outline-offset:-7px}
+.tab span{margin-right:-.18em}
+
+.contact{position:fixed;z-index:6;top:calc(env(safe-area-inset-top,0px) + 104px);right:var(--edge);width:min(340px,calc(100vw - 28px));padding:22px 22px 18px;border:1px solid var(--glass-line);border-radius:16px;background:var(--glass);box-shadow:0 24px 60px rgb(0 0 0 / .6),0 0 40px rgb(138 40 139 / .28);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);text-align:left}
+.contact.is-in{animation:drop .22s ease-out}
+@keyframes drop{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.contact h2{margin:0;padding-right:28px;font:400 1.5rem/1.15 var(--display);letter-spacing:.02em;color:var(--text);outline:none}
+.contact .role{margin:.45rem 0 1.15rem;font:400 .76rem/1.4 var(--mono);letter-spacing:.05em;color:var(--text-3)}
+.contact dl{margin:0;display:grid;gap:14px}
+.contact dt{margin:0 0 .35rem;font:700 .66rem/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--lilac)}
+.contact dd{margin:0;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.6rem}
+.contact dd a{min-width:0;overflow-wrap:anywhere;color:var(--text);text-decoration:none;font:700 1.28rem/1.2 var(--sans);font-variant-numeric:tabular-nums}
+.contact dd a.email{font-size:1rem}
+.contact dd a:hover{text-decoration:underline;text-underline-offset:3px}
+.copy{padding:.4rem .66rem;border:1px solid var(--glass-line);border-radius:8px;background:transparent;color:var(--text-2);font:700 .7rem/1 var(--mono);letter-spacing:.08em;cursor:pointer}
+.copy:hover{border-color:var(--text-2);color:var(--text)}
+.copy:focus-visible{outline:2px solid var(--lilac);outline-offset:2px}
+.church{margin:1.15rem 0 0;padding-top:.9rem;border-top:1px solid var(--glass-line);font:400 .88rem/1.45 var(--sans);color:var(--text-2)}
+.close{position:absolute;top:10px;right:10px;width:36px;height:36px;border:0;border-radius:50%;background:transparent;color:var(--text-2);font:400 1.5rem/1 var(--sans);cursor:pointer}
+.close:hover{background:rgb(255 255 255 / .08);color:var(--text)}
+.close:focus-visible{outline:2px solid var(--lilac);outline-offset:1px}
+
+@media (max-width:520px){.contact{left:14px;right:14px;width:auto}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+<noscript><style>#finder[hidden],#contact[hidden]{display:grid!important}#contact{position:static;margin:16px auto;width:min(340px,100%)}#learn,#contact-tab,#contact-close{display:none}</style></noscript>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<button type="button" class="tab" id="contact-tab" aria-expanded="false" aria-controls="contact"><span>Contact</span></button>
+
+<section class="contact" id="contact" aria-labelledby="contact-name" hidden>
+  <button type="button" class="close" id="contact-close" aria-label="Close contact">×</button>
+  <h2 id="contact-name" tabindex="-1">Pastor John Graham</h2>
+  <p class="role">Lutheran Church—Missouri Synod</p>
+  <dl>
+    <div>
+      <dt>Call</dt>
+      <dd><a id="phone" href="tel:+13038382161">303-838-2161</a><button type="button" class="copy" data-copy="303-838-2161" data-target="phone">Copy</button></dd>
+    </div>
+    <div>
+      <dt>Email</dt>
+      <dd><a id="email" class="email" href="mailto:pastorjhgraham@gmail.com">pastorjhgraham@gmail.com</a><button type="button" class="copy" data-copy="pastorjhgraham@gmail.com" data-target="email">Copy</button></dd>
+    </div>
+  </dl>
+  <p class="church">Shepherd of the Rockies Lutheran Church<br>Bailey, Colorado</p>
+</section>
+
+<div class="page">
+  <header class="mast">
+    <h1>OCS</h1>
+    <p class="coords">39.41° N · 105.47° W</p>
+  </header>
+
+  <main class="stage">
+    <figure class="sign">
+      <img src="ocs-logo.png" width="1400" height="1165" alt="God loves you this much: Jesus on the cross with His arms stretched wide. www.ocs.church">
+    </figure>
+
+    <blockquote class="verse">
+      <p>“But God shows his love for us in that while we were still sinners, Christ died for us.”</p>
+      <cite>Romans 5:8 ESV</cite>
+    </blockquote>
+
+    <div class="cta">
+      <button type="button" class="learn" id="learn" aria-expanded="false" aria-controls="finder">Learn more
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <p class="cta-note">Find a Lutheran church near you</p>
+    </div>
+
+    <form class="finder" id="finder" novalidate>
+      <label for="zip">Enter your ZIP code</label>
+      <div class="finder-row">
+        <input id="zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" aria-describedby="zip-msg">
+        <a class="go" id="go" href="https://locator.lcms.org/church" target="_blank" rel="noopener">Show nearby churches
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <p class="finder-msg" id="zip-msg" aria-live="polite">Opens the official LCMS church locator with the closest congregations listed first. Tap one to see its service times and website.</p>
+    </form>
+  </main>
+
+  <footer class="foot"><p>Scripture quotation from the ESV® Bible, © 2001 by Crossway. Used by permission.</p></footer>
+</div>
+
+<script>
+/* Learn more: ZIP code to the LCMS locator */
+(function(){
+  var learn=document.getElementById('learn'),finder=document.getElementById('finder'),zip=document.getElementById('zip'),go=document.getElementById('go'),msg=document.getElementById('zip-msg');
+  var BASE='https://locator.lcms.org/church',HELP=msg.textContent;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  finder.hidden=true;
+  function valid(v){return /^\d{5}$/.test(v);}
+  function say(text,err){msg.textContent=text;msg.classList.toggle('is-error',!!err);}
+  function nudge(){say('Enter your 5-digit ZIP code first, like 80421.',true);zip.focus();}
+  learn.addEventListener('click',function(){
+    var opening=finder.hidden;
+    finder.hidden=!opening;
+    learn.setAttribute('aria-expanded',String(opening));
+    if(opening){
+      finder.classList.remove('is-in');void finder.offsetWidth;finder.classList.add('is-in');
+      zip.focus({preventScroll:true});
+      finder.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
+    }
+  });
+  zip.addEventListener('input',function(){
+    var v=zip.value.replace(/\D/g,'').slice(0,5);
+    if(v!==zip.value)zip.value=v;
+    go.href=valid(v)?BASE+'?zip='+v+'&distance=50':BASE;
+    if(valid(v)&&msg.classList.contains('is-error'))say(HELP,false);
+  });
+  go.addEventListener('click',function(e){if(!valid(zip.value)){e.preventDefault();nudge();}});
+  finder.addEventListener('submit',function(e){e.preventDefault();if(valid(zip.value))go.click();else nudge();});
+  zip.dispatchEvent(new Event('input'));
+})();
+
+/* Contact tab */
+(function(){
+  var tab=document.getElementById('contact-tab'),panel=document.getElementById('contact'),close=document.getElementById('contact-close'),title=document.getElementById('contact-name');
+  function set(open,refocus){
+    panel.hidden=!open;tab.setAttribute('aria-expanded',String(open));
+    if(open){panel.classList.remove('is-in');void panel.offsetWidth;panel.classList.add('is-in');title.focus({preventScroll:true});}
+    else if(refocus){tab.focus();}
+  }
+  tab.addEventListener('click',function(){set(panel.hidden,false);});
+  close.addEventListener('click',function(){set(false,true);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden)set(false,true);});
+  document.addEventListener('click',function(e){if(!panel.hidden&&!panel.contains(e.target)&&!tab.contains(e.target))set(false,false);});
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      function show(t){btn.textContent=t;setTimeout(function(){btn.textContent='Copy';},1600);}
+      function fallback(){var el=document.getElementById(btn.dataset.target),r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);show('Selected');}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(btn.dataset.copy).then(function(){show('Copied');},fallback);}else{fallback();}
+    });
+  });
+  if(location.hash==='#contact')set(true,false);
+})();
+
+/* Night sky over the Rockies: seeded stars, a few that twinkle, two ridgelines and a small cross */
+(function(){
+  var cv=document.getElementById('sky');if(!cv||!cv.getContext)return;
+  var ctx=cv.getContext('2d'),base=document.createElement('canvas'),bctx=base.getContext('2d'),front=document.createElement('canvas'),fctx=front.getContext('2d');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W,H,dpr,tw=[],raf=0,last=0,timer=0;
+  function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  function ridge(r,y0,amp,segs){
+    var f=[1+r()*.8,2.6+r()*1.6,6+r()*4],p=[r()*6.3,r()*6.3,r()*6.3],w=[.55,.3,.15],pts=[];
+    for(var i=0;i<=segs;i++){var u=i/segs,v=0;for(var k=0;k<3;k++)v+=w[k]*Math.sin(u*f[k]*Math.PI*2+p[k]);v+=(r()-.5)*.1;pts.push([u*W,y0-amp*(.5+.5*v)]);}
+    return pts;
+  }
+  function fill(c,pts,color){c.beginPath();c.moveTo(0,H);for(var i=0;i<pts.length;i++)c.lineTo(pts[i][0],pts[i][1]);c.lineTo(W,H);c.closePath();c.fillStyle=color;c.fill();}
+  function build(){
+    dpr=Math.min(window.devicePixelRatio||1,2);W=window.innerWidth;H=window.innerHeight;
+    [cv,base,front].forEach(function(c){c.width=Math.round(W*dpr);c.height=Math.round(H*dpr);});
+    var r=rng(19);
+    bctx.setTransform(dpr,0,0,dpr,0,0);
+    var g=bctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#05020A');g.addColorStop(.5,'#10061A');g.addColorStop(.82,'#260C30');g.addColorStop(1,'#1A0822');
+    bctx.fillStyle=g;bctx.fillRect(0,0,W,H);
+    var far=ridge(r,H*.9,H*.13,72),near=ridge(r,H*.975,H*.07,72);
+    var top=Math.min.apply(null,far.map(function(q){return q[1];}));
+    var n=Math.max(120,Math.min(700,Math.round(W*H/2300)));tw=[];
+    for(var i=0;i<n;i++){
+      var x=r()*W,y=Math.pow(r(),1.3)*(top-6),big=r()<.06,s=big?1.1+r()*.8:.3+r()*.7,a=.3+r()*.65,c=r()<.3?'#E9CFF2':'#FFFFFF';
+      if(!big&&r()<.1){tw.push({x:x,y:y,s:s+.15,a:a,c:c,sp:.0008+r()*.0018,ph:r()*6.3});continue;}
+      if(big){var rg=bctx.createRadialGradient(x,y,0,x,y,s*4);rg.addColorStop(0,'rgba(255,240,255,'+(a*.5).toFixed(2)+')');rg.addColorStop(1,'rgba(255,240,255,0)');bctx.fillStyle=rg;bctx.fillRect(x-s*4,y-s*4,s*8,s*8);}
+      bctx.globalAlpha=a;bctx.fillStyle=c;bctx.beginPath();bctx.arc(x,y,s,0,6.2832);bctx.fill();bctx.globalAlpha=1;
+    }
+    fctx.setTransform(dpr,0,0,dpr,0,0);fctx.clearRect(0,0,W,H);
+    fill(fctx,far,'#1C0A24');
+    var q=far[Math.round(far.length*.79)],cx=q[0],cy=q[1]+1;
+    fctx.fillStyle='#1C0A24';fctx.fillRect(cx-1.1,cy-16,2.2,17);fctx.fillRect(cx-4.5,cy-12.5,9,2);
+    fill(fctx,near,'#07030A');
+    paint(0);
+  }
+  function paint(t){
+    ctx.setTransform(1,0,0,1,0,0);ctx.drawImage(base,0,0);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    for(var i=0;i<tw.length;i++){var s=tw[i];ctx.globalAlpha=s.a*(.5+.5*Math.sin(t*s.sp+s.ph));ctx.fillStyle=s.c;ctx.beginPath();ctx.arc(s.x,s.y,s.s,0,6.2832);ctx.fill();}
+    ctx.globalAlpha=1;ctx.setTransform(1,0,0,1,0,0);ctx.drawImage(front,0,0);
+  }
+  function loop(t){raf=requestAnimationFrame(loop);if(t-last<50)return;last=t;paint(t);}
+  build();
+  if(!reduce){
+    raf=requestAnimationFrame(loop);
+    document.addEventListener('visibilitychange',function(){cancelAnimationFrame(raf);if(!document.hidden)raf=requestAnimationFrame(loop);});
+  }
+  window.addEventListener('resize',function(){clearTimeout(timer);timer=setTimeout(build,150);});
+})();
+</script>
+</body>
+</html>
