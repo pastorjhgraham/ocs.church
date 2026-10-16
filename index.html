@@ -57,10 +57,11 @@ body{margin:0}
 html,body{height:100%}
 body{background-color:var(--night);background-image:radial-gradient(ellipse 75% 65% at 50% 34%,var(--royal-hi) 0%,var(--royal) 45%,var(--night) 100%);background-attachment:fixed;color:var(--cream);font:400 1rem/1.6 var(--sans);-webkit-font-smoothing:antialiased}
 a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
-.page{position:relative;min-height:100%;display:flex;flex-direction:column;padding-inline:var(--gutter);overflow-x:hidden;overflow-x:clip}
+/* One screen: the page is exactly the visible height (svh, so phone toolbars never hide the footer), and the medallion takes whatever height the masthead, verse, button and footer leave over. */
+.page{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;padding-inline:var(--gutter);overflow-x:hidden;overflow-x:clip}
 
 /* Masthead */
-.mast{padding-top:clamp(20px,4vh,40px);display:flex;flex-direction:column;align-items:center;gap:.45rem;text-align:center}
+.mast{padding-top:clamp(12px,2.4vh,30px);padding-top:clamp(12px,2.4svh,30px);display:flex;flex-direction:column;align-items:center;gap:.35rem;gap:clamp(.25rem,.8svh,.45rem);text-align:center}
 .mast h1{margin:0;display:flex;align-items:center;gap:clamp(14px,2.2vw,22px);font:400 clamp(1.45rem,1.1rem + 1.4vw,2.1rem)/1 var(--display);letter-spacing:.5em;color:var(--gold)}
 .mast h1 span{margin-right:-.5em}
 .mast h1::before,.mast h1::after{content:"";width:clamp(26px,7vw,84px);height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
@@ -68,8 +69,10 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4
 .coords{margin:0;font:500 .95rem/1 var(--serif);font-variant-caps:all-small-caps;letter-spacing:.2em;color:var(--muted)}
 
 /* The sign, framed, with glory rays */
-.stage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(22px,3.6vh,36px);padding-block:clamp(26px,4.5vh,48px) clamp(20px,3vh,32px);text-align:center}
-.halo{position:relative;isolation:isolate;width:min(430px,84vw,46vh);width:min(430px,84vw,46svh)}
+.stage{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(10px,2.2vh,28px);gap:clamp(10px,2.2svh,28px);padding-block:clamp(10px,2.2vh,30px) clamp(8px,1.8vh,24px);padding-block:clamp(10px,2.2svh,30px) clamp(8px,1.8svh,24px);text-align:center}
+.halo-cell{flex:1 1 0;min-height:140px;width:100%;display:grid;place-items:center;container-type:size}
+.halo{position:relative;isolation:isolate;width:min(430px,84vw,38vh)}
+@supports (width:1cqh){.halo{width:min(430px,84vw,100cqw,100cqh)}}
 .halo::before{content:"";position:absolute;inset:-62%;z-index:-1;pointer-events:none;
   background:radial-gradient(closest-side,rgb(216 172 88 / .3),rgb(138 40 139 / .18) 46%,transparent 70%),repeating-conic-gradient(from -90deg,rgb(244 218 152 / .2) 0deg 1deg,transparent 1deg 6deg);
   -webkit-mask-image:radial-gradient(closest-side,#000 24%,rgb(0 0 0 / .5) 48%,transparent 74%);
@@ -81,16 +84,16 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4
 @keyframes hang{from{opacity:.4;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* Romans 5:8 */
-.verse{margin:0;display:grid;justify-items:center;gap:.85rem}
-.verse p{margin:0;max-width:28ch;font:italic 400 clamp(1.32rem,1.05rem + 1.05vw,1.72rem)/1.42 var(--serif);color:var(--cream);text-wrap:balance}
+.verse{margin:0;display:grid;justify-items:center;gap:.6rem;gap:clamp(.4rem,1.2svh,.85rem)}
+.verse p{margin:0;max-width:40ch;font:italic 400 clamp(1.06rem,1.05rem + 1.05vw,1.72rem)/1.38 var(--serif);font-size:clamp(1.06rem,min(1.05rem + 1.05vw,.4rem + 2.6svh),1.72rem);color:var(--cream);text-wrap:balance}
 .verse .q{color:var(--gold)}
 .verse cite{display:flex;align-items:center;gap:.75rem;font:500 1.1rem/1 var(--serif);font-style:normal;font-variant-caps:all-small-caps;letter-spacing:.24em;color:var(--gold)}
 .verse cite span{margin-right:-.24em}
 .verse cite::before,.verse cite::after{content:"";width:clamp(22px,4vw,36px);height:1px;background:var(--line)}
 
 /* Learn more + ZIP finder */
-.cta{display:flex;flex-direction:column;align-items:center;gap:.7rem}
-.learn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:3.6rem;padding:.85rem 1.95rem .9rem 2.35rem;border:0;border-radius:999px;background:linear-gradient(180deg,var(--gold-hi) 0%,var(--gold) 55%,var(--gold-lo) 100%);color:var(--ink);font:800 1.32rem/1 var(--sans);letter-spacing:.01em;cursor:pointer;box-shadow:inset 0 1px 0 rgb(255 255 255 / .6),inset 0 -2px 0 rgb(110 70 15 / .3),0 12px 28px rgb(0 0 0 / .5),0 0 44px rgb(216 172 88 / .3);transition:transform .15s ease,box-shadow .15s ease}
+.cta{display:flex;flex-direction:column;align-items:center;gap:.6rem;gap:clamp(.35rem,1.1svh,.7rem)}
+.learn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:3.4rem;min-height:clamp(2.9rem,6.6svh,3.6rem);padding:.75rem 1.95rem .8rem 2.35rem;border:0;border-radius:999px;background:linear-gradient(180deg,var(--gold-hi) 0%,var(--gold) 55%,var(--gold-lo) 100%);color:var(--ink);font:800 1.32rem/1 var(--sans);letter-spacing:.01em;cursor:pointer;box-shadow:inset 0 1px 0 rgb(255 255 255 / .6),inset 0 -2px 0 rgb(110 70 15 / .3),0 12px 28px rgb(0 0 0 / .5),0 0 44px rgb(216 172 88 / .3);transition:transform .15s ease,box-shadow .15s ease}
 .learn:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgb(255 255 255 / .6),inset 0 -2px 0 rgb(110 70 15 / .3),0 16px 34px rgb(0 0 0 / .55),0 0 58px rgb(216 172 88 / .45)}
 .learn:active{transform:none}
 .learn:focus-visible{outline:3px solid var(--cream);outline-offset:4px}
@@ -102,7 +105,7 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4
 .learn span,.learn svg{position:relative;z-index:1}
 .learn svg{width:1.05em;height:1.05em;flex:none;transition:transform .2s ease}
 .learn[aria-expanded="true"] svg{transform:rotate(180deg)}
-.cta-note{margin:0;font:500 1.04rem/1.35 var(--sans);color:var(--cream-2)}
+.cta-note{margin:0;font:500 1.04rem/1.35 var(--sans);font-size:clamp(.95rem,.55rem + 1.1svh,1.04rem);color:var(--cream-2)}
 
 .finder{color-scheme:light;width:min(100%,31rem);display:grid;grid-template-columns:minmax(0,1fr);gap:.65rem;padding:1.15rem 1.2rem 1.05rem;border-radius:14px;border-top:3px solid var(--gold);background:var(--card);color:var(--ink);text-align:left;box-shadow:0 18px 44px rgb(0 0 0 / .55)}
 .finder.is-in{animation:rise .26s ease-out}
@@ -118,12 +121,13 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4
 .finder-msg{margin:0;font:400 .96rem/1.45 var(--sans);color:var(--ink-2)}
 .finder-msg.is-error{color:var(--error);font-weight:700}
 
-.foot{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px 20px;width:min(100%,980px);margin-inline:auto;padding-block:14px 20px}
+/* Footer: rose bottom left, LCMS bottom right, the ESV credit between them in one row */
+.foot{--rose:clamp(84px,9vw,108px);display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px 14px;width:100%;padding-block:8px calc(14px + env(safe-area-inset-bottom,0px))}
 .foot-rose-link{justify-self:start;display:block;border-radius:50%;transition:transform .2s ease,filter .2s ease}
 .foot-rose-link:hover{transform:scale(1.05);filter:drop-shadow(0 0 14px rgb(216 172 88 / .45))}
 .foot-rose-link:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
-.foot-rose{display:block;width:clamp(84px,9vw,108px);height:auto;filter:drop-shadow(0 4px 10px rgb(0 0 0 / .45))}
-.foot-credit{margin:0;max-width:36ch;text-align:center;font:400 .74rem/1.5 var(--sans);color:var(--muted)}
+.foot-rose{display:block;width:var(--rose);height:auto;filter:drop-shadow(0 4px 10px rgb(0 0 0 / .45))}
+.foot-credit{margin:0;justify-self:center;max-width:34ch;text-align:center;font:400 .66rem/1.45 var(--sans);color:var(--muted)}
 .foot-lcms{justify-self:end;margin-right:-.3em;font:400 2.025rem/1 var(--display);letter-spacing:.3em;color:var(--gold);text-decoration:none}
 .foot-lcms:hover{color:var(--gold-hi);text-decoration:underline;text-underline-offset:3px}
 
@@ -161,8 +165,17 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4
   .ribbon{width:40px;height:calc(118px + env(safe-area-inset-top,0px))}
   .ribbon:hover,.ribbon[aria-expanded="true"]{height:calc(126px + env(safe-area-inset-top,0px))}
   .contact,.contact[data-side]{top:calc(env(safe-area-inset-top,0px) + 136px);left:14px;right:14px;width:auto}
+}
+@media (max-width:359px){
   .foot{grid-template-columns:auto auto;justify-content:space-between}
-  .foot-credit{grid-column:1 / -1;grid-row:2;justify-self:center}
+  .foot-credit{grid-column:1 / -1;grid-row:2}
+}
+/* Wide screens: the rose and LCMS sit in the bottom corners beside the centered column, so the footer adds only the credit line's height */
+@media (min-width:900px){
+  .foot{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:end;margin-top:calc(2.9rem - var(--rose));padding-block:0 calc(16px + env(safe-area-inset-bottom,0px));pointer-events:none}
+  .foot>*{pointer-events:auto}
+  .foot-lcms{align-self:center}
+  .foot-credit{max-width:40ch;font-size:.74rem}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
@@ -197,7 +210,7 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4
   </header>
 
   <main class="stage">
-    <div class="halo">
+    <div class="halo-cell"><div class="halo">
       <svg class="medallion" viewBox="0 0 600 600" role="img" aria-labelledby="medallion-title">
         <title id="medallion-title">God loves you this much: Jesus on the cross with His arms stretched wide</title>
         <defs>
@@ -216,7 +229,7 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4
         <text class="word" x="254" y="310" font-size="50" letter-spacing="6" text-anchor="end">THIS</text>
         <text class="word" x="336" y="310" font-size="50" letter-spacing="3" text-anchor="start">MUCH</text>
       </svg>
-    </div>
+    </div></div>
 
     <blockquote class="verse">
       <p><span class="q">“</span>But God shows his love for us in that while we were still sinners, Christ died for us.<span class="q">”</span></p>
@@ -252,7 +265,7 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4
 <script>
 /* Learn more: ZIP code to the LCMS locator */
 (function(){
-  var learn=document.getElementById('learn'),finder=document.getElementById('finder'),zip=document.getElementById('zip'),go=document.getElementById('go'),msg=document.getElementById('zip-msg');
+  var learn=document.getElementById('learn'),finder=document.getElementById('finder'),zip=document.getElementById('zip'),go=document.getElementById('go'),msg=document.getElementById('zip-msg'),cell=document.querySelector('.halo-cell');
   var BASE='https://locator.lcms.org/church',HELP=msg.textContent;
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   finder.hidden=true;
@@ -261,6 +274,8 @@ a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4
   function nudge(){say('Enter your 5-digit ZIP code first, like 80421.',true);zip.focus();}
   learn.addEventListener('click',function(){
     var opening=finder.hidden;
+    /* While the ZIP form is open the medallion keeps its size and the page scrolls, instead of the sign shrinking to make room */
+    cell.style.flex=opening?'0 0 '+cell.getBoundingClientRect().height+'px':'';
     finder.hidden=!opening;
     learn.setAttribute('aria-expanded',String(opening));
     if(opening){
